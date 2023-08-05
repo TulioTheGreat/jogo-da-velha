@@ -56,7 +56,13 @@ function check(){
 
     for (pos of positions){
         if (pos.every((item) => items.includes(item))){
-            alert("O Jogador '" + playerLastMove + "' ganhou!");
+            const jogadorVitorioso = (
+              playerLastMove == '<i class="fa-solid fa-xmark fa-2x"></i>'
+              ? 'X'
+              : "O"   
+            );
+
+            alert("O Jogador '" + jogadorVitorioso + "' ganhou!");
             init();
             return;
         }
