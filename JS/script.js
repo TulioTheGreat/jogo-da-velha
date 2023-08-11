@@ -1,4 +1,5 @@
 const currentPlayer = document.querySelector('.current-player');
+const changeThemeBtn = document.getElementById('change-theme')
 
 let selected;
 let player1 = '<i class="fa-solid fa-xmark fa-2x"></i>';
@@ -74,3 +75,27 @@ function check(){
         return;
     }
 }
+
+function toggleDarkMode() {
+  document.body.classList.toggle("dark");
+}
+
+function loadTheme() {
+  const darkMode = localStorage.getItem("dark");
+
+  if (darkMode) {
+    toggleDarkMode();
+  }
+}
+
+loadTheme();
+
+changeThemeBtn.addEventListener("change", function () {
+  toggleDarkMode();
+
+  localStorage.removeItem("dark");
+
+  if (document.body.classList.contains("dark")) {
+    localStorage.setItem("dark", 1);
+  }
+});
